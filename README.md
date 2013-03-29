@@ -9,13 +9,13 @@ Create a new app from scratch (not from a template). Once the app is created, ch
 Add the following code to the index.html file and choose **Save**: 
 
 ```html
-&lt;script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"&gt;&lt;/script&gt;
+<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
 
-&lt;p&gt; Current Time : &lt;/p&gt;
-&lt;div id="current_time_response"&gt; &lt;/div&gt;
-&lt;button id="current_time"&gt; Refresh time &lt;/button&gt;
+<p> Current Time : </p>
+<div id="current_time_response"> </div>
+<button id="current_time"> Refresh time </button>
 
-&lt;script&gt;
+<script>
   $(document).ready(function(){
     $('#current_time').click(readTime);
   });
@@ -30,7 +30,7 @@ Add the following code to the index.html file and choose **Save**:
 
   // Do an initial read of the current time
   readTime();
-&lt;/script&gt;
+</script>
 ```
 
 This creates an App that displays the current time, and has a button for refreshing the time. It's only working on the client, with no server-side code involved.
