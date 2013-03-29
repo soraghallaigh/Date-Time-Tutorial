@@ -7,16 +7,18 @@
 <script>
   $(document).ready(function(){
     $('#current_time').click(readTime);
+    // Do an initial read of the current time
+    readTime();
   });
 
   function readTime() {
-    // Read the current time from a new Date object
-    var time = new Date().toString();
+    $fh.act({
+      act: 'getCurrentTime'
+    }, function(res) {
+      // Display the time in-app
+      $('#current_time_response').html(res.response);
+    });
 
-    // Display the time in-app using jQuery
-    $('#current_time_response').html(time);
   }
 
-  // Do an initial read of the current time
-  readTime();
 </script>

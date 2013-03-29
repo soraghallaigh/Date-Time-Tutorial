@@ -1,16 +1,9 @@
 var util = require('util');
-/* main.js
- * All calls here are publicly exposed as REST API endpoints.
- * - all parameters must be passed in a single JSON paramater.
- * - the return 'callback' method signature is 'callback (error, data)', where 'data' is a JSON object.
-*/
+var request = require('request');
 
-/* 'getConfig' server side REST API method.
- * Trivial example of pulling in a shared config file.
- */
-exports.getConfig = function(params, callback) {
-  console.log("In getConfig() call");
-  var cfg = require("config.js");
-  return callback(null, {config: cfg.config});
+exports.getCurrentTime = function(params, cb) {
+
+  request({uri : 'http://www.timeanddate.com/worldclock/city.html?n=78'}, function(err, res, body){
+    return cb(err, { response : body });
+  });
 };
-
