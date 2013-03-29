@@ -8,13 +8,14 @@ Create a new app from scratch (not from a template). Once the app is created, ch
 
 Add the following code to the index.html file and choose **Save**: 
 
-```<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+```html
+&lt;script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"&gt;&lt;/script&gt;
 
-<p> Current Time : </p>
-<div id="current_time_response"> </div>
-<button id="current_time"> Refresh time </button>
+&lt;p&gt; Current Time : &lt;/p&gt;
+&lt;div id="current_time_response"&gt; &lt;/div&gt;
+&lt;button id="current_time"&gt; Refresh time &lt;/button&gt;
 
-<script>
+&lt;script&gt;
   $(document).ready(function(){
     $('#current_time').click(readTime);
   });
@@ -29,7 +30,8 @@ Add the following code to the index.html file and choose **Save**:
 
   // Do an initial read of the current time
   readTime();
-</script>```
+&lt;/script&gt;
+```
 
 This creates an App that displays the current time, and has a button for refreshing the time. It's only working on the client, with no server-side code involved.
 [See The Code](https://github.com/learnhenry/Date-Time-Tutorial/commit/337325a26cd69bafb7bcb4dd9877665dd25f1be1)
@@ -39,7 +41,8 @@ This creates an App that displays the current time, and has a button for refresh
 
 Add the following code to the server-side main.js file (in /cloud/main.js). 
 
-```var util = require('util');
+```javascript
+var util = require('util');
 var request = require('request');
 
 exports.getCurrentTime = function(params, cb) {
@@ -47,7 +50,8 @@ exports.getCurrentTime = function(params, cb) {
   request({uri : 'http://www.timeanddate.com/worldclock/city.html?n=78'}, function(err, res, body){
     return cb(err, { response : body });
   });
-};```
+};
+```
 
 This will make an external web request to  to get the current time for Dublin, Ireland (the n=78 GET parameter indicates Dublin). 
 Go to this URL in your browser now and use your developer tools to inspect the current time text. Notice that the current time is inside a  tag with an id of "ct" - we're going to use this later to screen scrape the current date & time tutorial.
@@ -57,7 +61,8 @@ Go to this URL in your browser now and use your developer tools to inspect the c
 modify the readTime() function in index.html so that it calls the new server side function getCurrentTime(). Notice that this server side function returns the entire page from timeanddate.com (which is over 6,000 bytes of data). For now, we're just going to add this HTML to our app - you'll notice this makes quite the mess!
 
      
-```function readTime() {
+```javascript
+function readTime() {
     $fh.act({
       act: 'getCurrentTime'
     }, function(res) {
@@ -65,7 +70,8 @@ modify the readTime() function in index.html so that it calls the new server sid
       $('#current_time_response').html(res.response);
     });
 
-  }```
+}
+```
 [See The Code (Steps 3 & 4)](https://github.com/learnhenry/Date-Time-Tutorial/commit/b88e6b94faa70d0afea4f402727ac9af6addc11e)
 
 ### Step 5: Modify server side logic to only return the date and time
@@ -77,7 +83,8 @@ Rather than returning the entire page to the client and extracting the date on t
 
 We will now add the JSDom module, and the new server side function which returns only the date and time. 
 
-```exports.getCurrentTime = function(params, cb) {
+```javascript
+exports.getCurrentTime = function(params, cb) {
 
   request({uri : 'http://www.timeanddate.com/worldclock/city.html?n=78'}, function(err, res, body){
     // Run some jQuery on a html fragment
@@ -91,7 +98,8 @@ We will now add the JSDom module, and the new server side function which returns
     }
     );
   });
-};```
+};
+```
 You'll notice we don't need to make any changes to the client-side of our application - we're simply altering the text returned from the server side. This demonstrates how powerful keeping the client simple, and doing the complex processing & business logic of an app can be.
 [See The Code](https://github.com/learnhenry/Date-Time-Tutorial/commit/822c8a0ab6bf2632c0fce81a434643b3396af737)
 
