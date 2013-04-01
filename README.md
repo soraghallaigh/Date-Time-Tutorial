@@ -9,7 +9,7 @@ Create a new app from scratch (not from a template). Once the app is created, ch
 Add the following code to the index.html file and choose **Save**: 
 
 ```html
-<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
 
 <p> Current Time : </p>
 <div id="current_time_response"> </div>
