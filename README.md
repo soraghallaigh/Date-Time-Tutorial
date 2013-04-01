@@ -38,7 +38,20 @@ This creates an App that displays the current time, and has a button for refresh
 
 
 ### Step 3: Create Server Side Function
-
+  
+First, setup the correct dependencies by altering package.json - we're going to use the request module, and in a while we'll be using the JSDom module. Replace the contents of package.json with the following:  
+````javascript
+{
+  "name": "fh-app",
+  "version": "0.1.0",
+  "dependencies" : {
+    "fh-nodeapp" : "*"
+    ,"request" : "2.0.0"
+    ,"jsdom" : "0.5.4"
+}
+}
+````  
+  
 Add the following code to the server-side main.js file (in /cloud/main.js). 
 
 ```javascript
