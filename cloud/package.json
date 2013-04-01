@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "dependencies" : {
     "fh-nodeapp" : "*"
-    ,"request" : "2.16.6"
+    ,"request" : "2.0.0"
     ,"jsdom" : "0.5.4"
 }
 }
