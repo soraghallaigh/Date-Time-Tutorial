@@ -57,6 +57,7 @@ Add the following code to the server-side main.js file (in /cloud/main.js).
 ```javascript
 var util = require('util');
 var request = require('request');
+var jsdom = require('jsdom');
 
 exports.getCurrentTime = function(params, cb) {
 
