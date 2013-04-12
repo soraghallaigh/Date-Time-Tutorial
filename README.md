@@ -34,7 +34,7 @@ Add the following code to the index.html file and choose **Save**:
 ```
 
 This creates an App that displays the current time, and has a button for refreshing the time. It's only working on the client, with no server-side code involved.  
-[See The Code](https://github.com/learnhenry/Date-Time-Tutorial/commit/337325a26cd69bafb7bcb4dd9877665dd25f1be1)
+[See The Code](https://github.com/feedhenry-training/Date-Time-Tutorial/commit/337325a26cd69bafb7bcb4dd9877665dd25f1be1)
 
 
 ### Step 3: Create Server Side Function
@@ -86,7 +86,7 @@ function readTime() {
 
 }
 ```  
-[See The Code (Steps 3 & 4)](https://github.com/learnhenry/Date-Time-Tutorial/commit/b88e6b94faa70d0afea4f402727ac9af6addc11e)
+[See The Code (Steps 3 & 4)](https://github.com/feedhenry-training/Date-Time-Tutorial/commit/b88e6b94faa70d0afea4f402727ac9af6addc11e)
 
 ### Step 5: Modify server side logic to only return the date and time
 
@@ -115,7 +115,7 @@ exports.getCurrentTime = function(params, cb) {
 };
 ```
 You'll notice we don't need to make any changes to the client-side of our application - we're simply altering the text returned from the server side. This demonstrates how powerful keeping the client simple, and doing the complex processing & business logic of an app can be.  
-[See The Code](https://github.com/learnhenry/Date-Time-Tutorial/commit/822c8a0ab6bf2632c0fce81a434643b3396af737)
+[See The Code](https://github.com/feedhenry-training/Date-Time-Tutorial/commit/822c8a0ab6bf2632c0fce81a434643b3396af737)
 
 ### Step 7: Modify server side function to cache current time
 
@@ -123,4 +123,4 @@ Instead of hitting the current date & time website for every single request from
 We're also going to add some caching code to this function. When we successfully retrieve the current date and time, we're going to use $fh.cache to save the data with a 10 second interval. This means the data will become stale after ten seconds, and we will reach out to the website again to retrieve the data.     
 Lastly, we're now going to create a new getCurrentTime function, which simply checks the cache for a value. If it's empty, we reach out to the web. If there's data available in the cache, we return it.
   
-[See The Code](https://github.com/learnhenry/Date-Time-Tutorial/commit/1f5a088034d227912583d13922ff8ab64f11770e)
+[See The Code](https://github.com/feedhenry-training/Date-Time-Tutorial/commit/1f5a088034d227912583d13922ff8ab64f11770e)
