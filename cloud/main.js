@@ -8,17 +8,9 @@ var jsdom = require("jsdom");
   if not, it calls out to the web to retrieve & saves in cache
  */
 exports.getCurrentTime = function(params, cb) {
-  $fh.cache({
-    act: "load",
-    key: 'datetime'
-  }, function(err, res) {
-    if (err || !res) {
-      return getDateTimeFromWeb(params, cb);
-    }
 
-    return cb(null, res);
+ return getDateTimeFromWeb(params, cb);
 
-  });
 };
 
 /*
