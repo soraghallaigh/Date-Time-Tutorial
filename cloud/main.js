@@ -19,25 +19,6 @@ exports.getCurrentTime = function(params, cb) {
  */
 function getDateTimeFromWeb(params, cb){
   request({uri : 'http://www.automalluae.com/wcs/resources/store/10451/productview/byCategory/27601'}, function(err, res, body){
-    // Run some jQuery on a html fragment
-    jsdom.env(
-    body,
-    ["http://code.jquery.com/jquery.js"],
-    function(errors, window) {
-      var ct = window.$('#ct').text();
-      console.log("contents of the current time div:", ct);
-
-      $fh.cache({
-        act: "save",
-        key: 'datetime',
-        value: ct,
-        expire: 10 // expires in 10 seconds
-      }, function(err, res) {
-        // Success or failure not so important here - do nothing.
-      });
-
       return cb(errors, { response : ct });
-    }
-    );
   });
 }
