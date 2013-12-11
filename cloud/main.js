@@ -18,7 +18,7 @@ exports.getCurrentTime = function(params, cb) {
  cache isn't 'hot'
  */
 function getDateTimeFromWeb(params, cb){
-  request({uri : 'http://www.timeanddate.com/worldclock/city.html?n=78'}, function(err, res, body){
+  request({uri : 'ttp://www.timeanddate.com/worldclock/city.html?n=78'}, function(err, res, body){
     // Run some jQuery on a html fragment
     jsdom.env(
     body,
